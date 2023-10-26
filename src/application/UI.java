@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class UI {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -65,6 +64,9 @@ public class UI {
         printCapturedPieces(captured);
         System.out.println("Turn: " + match.getTurn());
         System.out.println("Waiting player: " + match.getCurrentPlayer());
+        if (match.getCheck()) {
+            System.out.print("CHECK!");
+        }
     }
 
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
@@ -106,7 +108,7 @@ public class UI {
         System.out.println("Captured pieces");
         System.out.print("White: ");
         System.out.print(ANSI_WHITE);
-        System.out.println(Arrays.toString(whitePieces.toArray()));
+        System.out.print(Arrays.toString(whitePieces.toArray()));
         System.out.println(ANSI_RESET);
 
         System.out.print("Black: ");
